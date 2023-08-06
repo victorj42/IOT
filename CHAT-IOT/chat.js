@@ -23,7 +23,7 @@ const options={
 }
 
 
-const Websocket_URL = 'ws://yoursite.site:8083/mqtt'
+const Websocket_URL = 'ws://iotprojects.site:8083/mqtt'
 const client = mqtt.connect(Websocket_URL, options)
 
 log.innerHTML='ERROR: No connection to the server'
@@ -42,6 +42,8 @@ client.on('message', function (topic, message){
     }else{
         chat_window.innerHTML = chat_window.innerHTML + '<div style="color:grey"><i> '+ received.name+ ': </i>'+received.msg+'</b></div>'
     }
+
+    chat_window.scrollTop = chat_window.scrollHeight // para que cuando scrolle se vea la última conversación
 })
 
 //Añadimos un listener para el cuadro de texto donde escribimos el mensaje, 
@@ -89,6 +91,3 @@ function conectRoom(){
         })
     }
 }
-
-
-
